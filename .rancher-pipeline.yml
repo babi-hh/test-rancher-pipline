@@ -4,7 +4,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: rancher-nginx:${CICD_EXECUTION_SEQUENCE}
+      tag: seldoon/rancher/rancher-nginx:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
       registry: hub.docker.com
     env:
