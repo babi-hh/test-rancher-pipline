@@ -1,18 +1,2 @@
-stages:
-- name: 构建docker
-  steps:
-  - publishImageConfig:
-      dockerfilePath: ./Dockerfile
-      buildContext: .
-      tag: seldoon/rancher:v2
-      pushRemote: true
-      registry: hub.docker.com
-    env:
-      PLUGIN_DEBUG: "true"
-      PLUGIN_INSECURE: "true"
-  when:
-    branch:
-      include:
-      - master
 timeout: 30
 notification: {}
