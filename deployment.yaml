@@ -1,0 +1,56 @@
+# 服务配置yaml
+apiVersion: v1
+kind: Service
+metadata:
+  # 服务名称
+  name: test-nginx-service
+  namespace: ingress-nginx
+spec:
+  # 所属应用名称
+  selector:
+    app: test-nginx-service
+  ports:
+    - name: http
+      # 服务对外暴露端口
+      port: 30080
+      # pod 容器对应服务端口
+      targetPort: 80
+    - name: https
+      # 服务对外暴露端口
+      port: 30443
+      # pod 容器对应服务端口
+      targetPort: 443
+---
+# 容器部署yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # 服务名称
+  name: test-nginx-service-deployment
+  namespace: ingress-nginx
+  # 所属应用名称
+  labels:
+    app: test-nginx-service
+spec:
+  # 负载节点数量
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-nginx-service
+  template:
+    metadata:
+      labels:
+        app: test-nginx-service
+    spec:
+      #指定调度节点为带有label标记为：kubernetes.io/hostname=k8s-node2的Node节点
+      nodeSelector:
+        zaodao.com/role: worker
+      containers:
+        - name: test-nginx-service
+          # 项目镜像
+          image: hub.docker.com/rancher/rancher-nginx:${CICD_EXECUTION_SEQUENCE}
+          imagePullPolicy: Always
+          # 容器端口
+          ports:
+            - containerPort: 80
+            - containerPort: 443
