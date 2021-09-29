@@ -8,15 +8,11 @@ stages:
       pushRemote: true
       registry: hub.docker.com
     env:
-      PLUGIN_DEBUG: true
-      PLUGIN_INSECURE: true
+      PLUGIN_DEBUG: "true"
+      PLUGIN_INSECURE: "true"
   when:
     branch:
       include:
       - master
-- name: 部署
-  steps:
-  - applyYamlConfig:
-      path: ./deployment.yaml
 timeout: 30
 notification: {}
