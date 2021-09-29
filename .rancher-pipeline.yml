@@ -4,9 +4,9 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: seldoon/rancher:${CICD_EXECUTION_SEQUENCE}
+      tag: dockerhub.izaodao.com/seldoon/nginx:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
-      registry: hub.docker.com
+      registry: dockerhub.izaodao.com
     env:
       PLUGIN_INSECURE: "true"
   when:
