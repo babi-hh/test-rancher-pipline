@@ -6,7 +6,7 @@ stages:
       buildContext: .
       tag: rancher-nginx:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
-      registry: index.docker.io
+      registry: hub.docker.com
   when:
     branch:
       include:
