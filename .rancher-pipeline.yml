@@ -1,2 +1,8 @@
-timeout: 30
+stages:
+- name: test
+  steps:
+  - runScriptConfig:
+      image: nginx
+      shellScript: echo "aaaaaa"
+timeout: 60
 notification: {}
