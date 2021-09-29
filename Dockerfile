@@ -1,3 +1,2 @@
 FROM nginx
-RUN mkdir /www
-COPY ./* /www/
+COPY ./* /usr/share/nginx/html/
