@@ -8,8 +8,8 @@ stages:
       pushRemote: true
       registry: hub.docker.com
     env:
-      PLUGIN_DEBUG: "true"
-      PLUGIN_INSECURE: "true"
+      PLUGIN_DEBUG: true
+      PLUGIN_INSECURE: true
   when:
     branch:
       include:
