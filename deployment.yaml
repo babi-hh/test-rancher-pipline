@@ -48,7 +48,7 @@ spec:
       containers:
         - name: test-nginx-service
           # 项目镜像
-          image: hub.docker.com/rancher/rancher-nginx:${CICD_EXECUTION_SEQUENCE}
+          image: seldoon/rancher:${CICD_EXECUTION_SEQUENCE}
           imagePullPolicy: Always
           # 容器端口
           ports:
