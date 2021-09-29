@@ -1,0 +1,19 @@
+stages:
+- name: 构建docker
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: rancher-nginx:${CICD_EXECUTION_SEQUENCE}
+      pushRemote: true
+      registry: index.docker.io
+  when:
+    branch:
+      include:
+      - master
+- name: 部署
+  steps:
+  - applyYamlConfig:
+      path: ./deployment.yaml
+timeout: 60
+notification: {}
