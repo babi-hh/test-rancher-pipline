@@ -4,10 +4,11 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: seldoon/rancher:${CICD_EXECUTION_SEQUENCE}
+      tag: seldoon/rancher:v2
       pushRemote: true
       registry: hub.docker.com
     env:
+      PLUGIN_DEBUG: "true"
       PLUGIN_INSECURE: "true"
   when:
     branch:
@@ -17,5 +18,5 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
-timeout: 60
+timeout: 30
 notification: {}
