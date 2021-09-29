@@ -2,7 +2,7 @@ stages:
 - name: test
   steps:
   - runScriptConfig:
-      image: nginx
+      image: seldoon/rancher:v2
       shellScript: echo "aaaaaa"
 timeout: 60
 notification: {}
