@@ -7,6 +7,8 @@ stages:
       tag: rancher-nginx:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
       registry: hub.docker.com
+    env:
+      PLUGIN_INSECURE: "true"
   when:
     branch:
       include:
