@@ -2,7 +2,7 @@ stages:
 - name: test
   steps:
   - runScriptConfig:
-      image: seldoon/rancher:v2
+      image: php:latest
       shellScript: echo "aaaaaa"
 timeout: 60
 notification: {}
